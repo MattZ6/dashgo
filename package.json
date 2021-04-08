@@ -2,6 +2,13 @@
   "name": "dashgo",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Matheus Felipe Zanin",
+    "email": "matt_z6@hotmail.com",
+    "url": "https://github.com/MattZ6"
+  },
+  "repository": "https://github.com/MattZ6/dashgo",
+  "bugs": "https://github.com/MattZ6/dashgo/issues",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
