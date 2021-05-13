@@ -19,7 +19,7 @@
     "@chakra-ui/react": "1.6.1",
     "@emotion/react": "11.4.0",
     "@emotion/styled": "11.3.0",
-    "@hookform/resolvers": "2.4.0",
+    "@hookform/resolvers": "2.5.0",
     "apexcharts": "3.26.2",
     "framer-motion": "4.1.13",
     "next": "10.2.0",
