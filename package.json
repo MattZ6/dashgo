@@ -1,5 +1,6 @@
 {
   "name": "dashgo",
+  "description": "🔥 Dashboard administrativo construído utilizando NextJS & ChakraUI, desenvolvido na trilha de React JS — Ignite",
   "version": "0.1.0",
   "private": true,
   "author": {
