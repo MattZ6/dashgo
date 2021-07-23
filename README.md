@@ -7,21 +7,21 @@
 </div>
 
 <div align="center">
-  <img style="border-radius: 6px;" src=".github/images/dashboard.jpg" alt="Tela inicial, dashboard" title="Tela inicial, dashboard" />
+  <img style="border-radius: 6px;" src=".github/images/dashboard.jpg" alt="📊 Tela inicial da aplicação DashGO, exibindo — em forma de exemplo — alguns gráficos com a taxa de inscrições" title="📊 Tela inicial da aplicação DashGO, exibindo — em forma de exemplo — alguns gráficos com a taxa de inscrições" />
 
-  > <small>Tela do dashboard</small>
+  > <small>Dashboard</small>
 </div>
 
 <div align="center">
-  <img style="border-radius: 6px;" src=".github/images/users.jpg" alt="Tela com a lista de usuários" title="Tela com a lista de usuários" />
+  <img style="border-radius: 6px;" src=".github/images/users.jpg" alt="📊 Tela com a listagem de usuários" title="📊 Tela com a listagem de usuários" />
 
-  > <small>Tela com a lista de usuários</small>
+  > <small>Lista de usuários</small>
 </div>
 
 <div align="center">
-  <img style="border-radius: 6px;" src=".github/images/create-user.jpg" alt="Tela de criação de usuários" title="Tela de criação de usuários" />
+  <img style="border-radius: 6px;" src=".github/images/create-user.jpg" alt="📊 Tela de criação de novos usuários" title="📊 Tela de criação de novos usuários" />
 
-  > <small>Tela de criação de usuários</small>
+  > <small>Cadastro de usuários</small>
 </div>
 
 ## 💡 Você vai precisar
