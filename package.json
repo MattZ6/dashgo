@@ -33,7 +33,7 @@
     "yup": "0.32.9"
   },
   "devDependencies": {
-    "@types/node": "14.17.21",
+    "@types/node": "14.17.22",
     "@types/react": "17.0.27",
     "typescript": "4.4.3"
   }
