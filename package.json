@@ -19,8 +19,8 @@
   "dependencies": {
     "@chakra-ui/core": "0.8.0",
     "@chakra-ui/react": "1.6.12",
-    "@emotion/react": "11.5.0",
-    "@emotion/styled": "11.3.0",
+    "@emotion/react": "11.6.0",
+    "@emotion/styled": "11.6.0",
     "@hookform/resolvers": "2.8.3",
     "apexcharts": "3.29.0",
     "framer-motion": "5.3.0",
