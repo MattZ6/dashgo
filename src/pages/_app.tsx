@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
         <SidebarDrawerProvider>
-            <Component {...pageProps} />
+          <Component {...pageProps} />
         </SidebarDrawerProvider>
       </ChakraProvider>
 
