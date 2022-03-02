@@ -22,13 +22,13 @@ export function makeServer() {
           return faker.internet.email();
         },
         createdAt() {
-          return faker.date.recent(faker.datatype.number({ min:1,max: 30 }));
+          return faker.date.recent(faker.datatype.number({ min:1, max: 30 }));
         },
       }),
     },
 
     seeds(server) {
-      server.createList('user', 125);
+      server.createList('user', 10);
     },
 
     routes() {

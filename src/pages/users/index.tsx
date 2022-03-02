@@ -1,23 +1,40 @@
-import { Box, Flex, Heading, Button, Icon, Table, Thead, Tr, Th, Td, Checkbox, Tbody, Text, useBreakpointValue, IconButton } from '@chakra-ui/react';
+import { Box, Flex, Heading, Button, Icon, Table, Thead, Tr, Th, Td, Checkbox, Tbody, Text, useBreakpointValue, IconButton, Spinner } from '@chakra-ui/react';
 import { RiAddLine, RiEditLine } from 'react-icons/ri';
 import Link from 'next/link';
+import { useQuery } from 'react-query';
 
 import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar';
 import { Pagination } from '../../components/Pagination';
-import { useEffect } from 'react';
+
+async function fetcher() {
+  const response = await fetch('http://localhost:3000/api/users');
+  const data = await response.json();
+
+  const users = data.users.map((user, index) => ({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    createdAt: new Date(user.createdAt).toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    }),
+    isChecked: index === 4,
+  }));
+
+  return users;
+}
 
 export default function UserList() {
+  const { isLoading, error, data } = useQuery(['users'], fetcher, {
+    staleTime: 5 * 1000, // 👈 5 seconds
+  });
+
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
   });
-
-  useEffect(() => {
-    fetch('http://localhost:3000/api/users')
-      .then(response => response.json())
-      .then(data => console.log(data));
-  }, []);
 
   return (
     <Box>
@@ -45,45 +62,65 @@ export default function UserList() {
             </Link>
           </Flex>
 
-          <Table colorScheme="whiteAlpha">
-            <Thead>
-              <Tr>
-                <Th px={["4", "4", "6"]} color="gray.300" w="8">
-                  <Checkbox colorScheme="purple" />
-                </Th>
-                <Th>Usuário</Th>
-                {isWideVersion && <Th>Data de cadastro</Th>}
-                <Th textAlign="end"></Th>
-              </Tr>
-            </Thead>
+          {
+            isLoading ? (
+              <Flex align="center">
+                <Spinner />
+              </Flex>
+            ) : error ? (
+              <Flex align="center">
+                <Text>Falha ao obter dados dos usuários.</Text>
+              </Flex>
+            ) : (
+              <>
+                <Table colorScheme="whiteAlpha">
+                  <Thead>
+                    <Tr>
+                      <Th px={["4", "4", "6"]} color="gray.300" w="8">
+                        <Checkbox
+                          colorScheme="purple"
+                          isChecked={data.every(user => user.isChecked)}
+                          isIndeterminate={data.some(user => user.isChecked)}
+                        />
+                      </Th>
+                      <Th>Usuário</Th>
+                      {isWideVersion && <Th>Data de cadastro</Th>}
+                      <Th textAlign="end"></Th>
+                    </Tr>
+                  </Thead>
 
-            <Tbody>
-              <Tr>
-                <Td px={["4", "4", "6"]}>
-                  <Checkbox colorScheme="purple" />
-                </Td>
-                <Td>
-                  <Box>
-                    <Text fontWeight="bold">Matheus Zanin</Text>
-                    <Text fontSize="small" color="gray.300">matt_z6@hotmail.com</Text>
-                  </Box>
-                </Td>
-                {isWideVersion && <Td>04 de Abril de 2021</Td>}
-                <Td textAlign="end">
-                  <IconButton
-                    aria-label="Edit user"
-                    as="a"
-                    size="sm"
-                    fontSize="sm"
-                    colorScheme="purple"
-                    icon={<Icon as={RiEditLine} fontSize="16" />}
-                  />
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
+                  <Tbody>
+                    { data.map(user => (
+                      <Tr key={user.id}>
+                        <Td px={["4", "4", "6"]}>
+                          <Checkbox colorScheme="purple" isChecked={user.isChecked} />
+                        </Td>
+                        <Td>
+                          <Box>
+                            <Text fontWeight="bold">{user.name}</Text>
+                            <Text fontSize="small" color="gray.300">{user.email}</Text>
+                          </Box>
+                        </Td>
+                        {isWideVersion && <Td>{user.createdAt}</Td>}
+                        <Td textAlign="end">
+                          <IconButton
+                            aria-label="Edit user"
+                            as="a"
+                            size="sm"
+                            fontSize="sm"
+                            colorScheme="purple"
+                            icon={<Icon as={RiEditLine} fontSize="16" />}
+                          />
+                        </Td>
+                      </Tr>
+                    )) }
+                  </Tbody>
+                </Table>
 
-          <Pagination />
+                <Pagination />
+              </>
+            )
+          }
         </Box>
       </Flex>
     </Box>
