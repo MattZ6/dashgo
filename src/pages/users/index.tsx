@@ -3,13 +3,14 @@ import { RiAddLine, RiEditLine } from 'react-icons/ri';
 import Link from 'next/link';
 import { useQuery } from 'react-query';
 
+import { api } from '../../services/api';
+
 import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar';
 import { Pagination } from '../../components/Pagination';
 
 async function fetcher() {
-  const response = await fetch('http://localhost:3000/api/users');
-  const data = await response.json();
+  const { data } = await api.get('/users');
 
   const users = data.users.map((user, index) => ({
     id: user.id,
@@ -27,7 +28,7 @@ async function fetcher() {
 }
 
 export default function UserList() {
-  const { isLoading, error, data } = useQuery(['users'], fetcher, {
+  const { isLoading, isFetching, error, data } = useQuery(['users'], fetcher, {
     staleTime: 5 * 1000, // 👈 5 seconds
   });
 
@@ -47,6 +48,7 @@ export default function UserList() {
           <Flex mb="8" justifyContent="space-between" alignItems="center">
             <Heading size="lg" fontWeight="normal">
               Usuários
+              { !isLoading && isFetching && <Spinner size="sm" ml={4} color="gray.500" /> }
             </Heading>
 
             <Link href="/users/create" passHref>
@@ -64,11 +66,11 @@ export default function UserList() {
 
           {
             isLoading ? (
-              <Flex align="center">
+              <Flex align="center" justify="center">
                 <Spinner />
               </Flex>
             ) : error ? (
-              <Flex align="center">
+              <Flex align="center" justify="center">
                 <Text>Falha ao obter dados dos usuários.</Text>
               </Flex>
             ) : (
