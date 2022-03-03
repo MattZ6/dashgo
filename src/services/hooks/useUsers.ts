@@ -54,6 +54,6 @@ type Props = {
 
 export function useUsers({ page }: Props) {
   return useQuery(['users', page], () => getUsers({ page }), {
-    staleTime: 10 * 1000, // 👈 10 seconds
+    staleTime: 10 * 60 * 1000, // 👈 10 minutes
   });
 }
