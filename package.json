@@ -22,7 +22,7 @@
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
     "@hookform/resolvers": "2.8.8",
-    "apexcharts": "3.35.0",
+    "apexcharts": "3.35.2",
     "axios": "0.27.2",
     "framer-motion": "6.3.3",
     "next": "12.1.6",
