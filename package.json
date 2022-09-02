@@ -37,7 +37,7 @@
   "devDependencies": {
     "@faker-js/faker": "7.4.0",
     "@types/node": "16.11.56",
-    "@types/react": "18.0.17",
+    "@types/react": "18.0.18",
     "miragejs": "0.1.45",
     "typescript": "4.8.2"
   }
