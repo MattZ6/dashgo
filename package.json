@@ -24,7 +24,7 @@
     "@hookform/resolvers": "2.9.8",
     "apexcharts": "3.35.5",
     "axios": "0.27.2",
-    "framer-motion": "7.3.2",
+    "framer-motion": "7.3.6",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-apexcharts": "1.4.0",
