@@ -46,7 +46,7 @@ cd dashgo
 Instale as dependências:
 
 ```bash
-yarn
+pnpm i
 ```
 
 ## 🔥 Executando
@@ -54,7 +54,7 @@ yarn
 Para executar a aplicação em ambiente de desenvolvimento (localmente):
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 ## 👨‍🏫 Sobre
